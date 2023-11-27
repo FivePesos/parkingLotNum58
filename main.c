@@ -100,7 +100,7 @@ void calculations(int hourEntered, int minuteEntered, int hourLeft, int minuteLe
 				break;
 			}
 			else{
-				totalCharge = (double) ((hour - 1.0) * 3.70);
+				totalCharge = (double) ((hour - 1.0) * 3.70) + 2.00;
 				break;
 			}
             break;
@@ -111,7 +111,7 @@ void calculations(int hourEntered, int minuteEntered, int hourLeft, int minuteLe
 				break;
 			}
 			else{
-				totalCharge = (double) ((hour - 2.0) * 2.30);
+				totalCharge = (double) ((hour - 2.0) * 2.30) + 1.00;
 				break;
 			}
             break;
