@@ -14,7 +14,7 @@ int main()
     userInput(&vehicleType, &hourEntered, &minuteEntered, &hourLeft, &minuteLeft);
     timeInTimeOut(hourEntered,minuteEntered,hourLeft,minuteLeft);
     typeOfVehicle(vehicleType);
-    calculations(hourEntered, minuteEntered, hourLeft, hourEntered, vehicleType);
+    calculations(hourEntered, minuteEntered, hourLeft, minuteLeft, vehicleType);
     return 0;
 }
 
@@ -63,7 +63,7 @@ void typeOfVehicle(char vehicleType){
 void calculations(int hourEntered, int minuteEntered, int hourLeft, int minuteLeft, char vehicleType){
     int minute;
     int hour;
-    int rate;
+    double rate;
     double totalCharge;
     char type = toupper(vehicleType);
 
@@ -75,43 +75,53 @@ void calculations(int hourEntered, int minuteEntered, int hourLeft, int minuteLe
     hour = hourLeft - hourEntered;
     minute = minuteLeft - minuteEntered;
 
+    printf("\tPARKING TIME\t\t\t%d:%d\n",hour, minute);
+
     if(minute > 0){
         hour++;
     }
 
-    printf("\tPARKING TIME\t\t\t%d:%d\n",hour, minute);
     printf("\tROUNDED TOTAL\t\t\t%d\n", hour);
 
     switch(type){
         case 'C':
-            if (hour <= 3) {
-                rate = 0;
-            } else {
-                rate = 1.50;
-            }
+            if (hour <= 3){
+				totalCharge = 0.0;
+				break;
+			}
+			else{
+				totalCharge = (double) (hour - 3.0) * 1.5;
+				break;
+			}
             break;
         case 'B':
-             if (hour <= 1) {
-                rate = 2;
-            } else {
-                rate = 3.70;
-            }
+            if (hour <= 1){
+				totalCharge =  2.0;
+				break;
+			}
+			else{
+				totalCharge = (double) ((hour - 1.0) * 3.70);
+				break;
+			}
             break;
 
         case 'T':
-            if (hour <= 2) {
-                rate = 1.00;
-            } else {
-                rate = 2.30;
-            }
+            if (hour <= 2){
+				totalCharge = 1.0;
+				break;
+			}
+			else{
+				totalCharge = (double) ((hour - 2.0) * 2.30);
+				break;
+			}
             break;
 
         default:
             printf("Invalid.\n");
             break;
     }
-    totalCharge = hour * rate;
+
     printf("\t\t\t\t----------\n");
-    printf("\tTOTAL CHARGE\t\t\t%.2lf\n",totalCharge);
+    printf("\tTOTAL CHARGE\t\t\t$%.2lf\n",totalCharge);
 }
 
