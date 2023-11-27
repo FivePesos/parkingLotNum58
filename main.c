@@ -29,10 +29,6 @@ void userInput(char *vehicleType, int *hourEntered, int *minuteEntered, int *hou
     scanf("%d", hourLeft);
     printf("Minute vehicle left lot\t\t(0 - 60)? ");
     scanf("%d", minuteLeft);
-
-    if(hourLeft < hourEntered){
-        printf("You are getting towed");
-    }
 }
 
 void timeInTimeOut(int hourEntered, int minuteEntered, int hourLeft, int minuteLeft){
