@@ -63,7 +63,6 @@ void typeOfVehicle(char vehicleType){
 void calculations(int hourEntered, int minuteEntered, int hourLeft, int minuteLeft, char vehicleType){
     int minute;
     int hour;
-    double rate;
     double totalCharge;
     char type = toupper(vehicleType);
 
