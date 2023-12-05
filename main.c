@@ -29,6 +29,9 @@ void userInput(char *vehicleType, int *hourEntered, int *minuteEntered, int *hou
     scanf("%d", hourLeft);
     printf("Minute vehicle left lot\t\t(0 - 60)? ");
     scanf("%d", minuteLeft);
+
+    if(hourEntered >  24  || hourLeft > 24)
+        printf("You are getting towed. ");
 }
 
 void timeInTimeOut(int hourEntered, int minuteEntered, int hourLeft, int minuteLeft){
@@ -76,9 +79,8 @@ void calculations(int hourEntered, int minuteEntered, int hourLeft, int minuteLe
 
     printf("\tPARKING TIME\t\t\t%d:%d\n",hour, minute);
 
-    if(minute > 0){
+    if(minute > 30)
         hour++;
-    }
 
     printf("\tROUNDED TOTAL\t\t\t%d\n", hour);
 
