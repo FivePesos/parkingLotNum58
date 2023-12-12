@@ -63,15 +63,39 @@ void processOutput(int hourEntered, int minuteEntered, int hourLeft, int minuteL
     minute > 30 ? hour++: hour;
     printf("\tROUNDED TOTAL\t\t\t%d\n", hour);
 
-    if (type == 'C' && hour <= 3)
-        totalCharge = 0.0;
-    else if (type == 'B' && hour <= 1)
-        totalCharge = 2.0;
-    else if (type == 'T' && hour <= 2)
-        totalCharge = 1.0;
-    else
-        totalCharge = (double)((hour - 3.0) * 1.5);
+    switch(type){
+        case 'C':
+            if (hour <= 3){
+				totalCharge = 0.0;
+				break;
+			}
+			else{
+				totalCharge = (double) (hour - 3.0) * 1.5;
+				break;
+			}
+            break;
+        case 'B':
+            if (hour <= 1){
+				totalCharge =  2.0;
+				break;
+			}
+			else{
+				totalCharge = (double) ((hour - 1.0) * 3.70) + 2.00;
+				break;
+			}
+            break;
 
+        case 'T':
+            if (hour <= 2){
+				totalCharge = 1.0;
+				break;
+			}
+			else{
+				totalCharge = (double) ((hour - 2.0) * 2.30) + 1.00;
+				break;
+			}
+            break;
+    }
     printf("\t\t\t\t----------\n");
     printf("\tTOTAL CHARGE\t\t\t$%.2lf\n",totalCharge);
 }
